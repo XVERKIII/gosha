@@ -1,0 +1,62 @@
+﻿<Page x:Class="autoRepairShop.Product.ProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:autoRepairShop.Product"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="41*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="161*"/>
+            <ColumnDefinition Width="639*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="115,0,0,368.6" Grid.RowSpan="2">
+            <Label Content="Поиск" HorizontalAlignment="Right" VerticalAlignment="Center"  
+                   Margin="0 0 -370 0" Foreground="AliceBlue" FontSize="20"/>
+            <TextBox x:Name="search" BorderBrush="#FFE2D587" BorderThickness="4 4 4 4" 
+                     Background="Transparent" HorizontalAlignment="Right" 
+                     Margin="0 0 -670 0" VerticalAlignment="Center" TextChanged="search_TextChanged"/>
+            <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource btnStyle}" Click="btnAdd_Click"/>
+            <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource btnStyle}" Click="btnDelete_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="0,0.2,0.8,-0.4">
+            <Button x:Name="btnReno" Content="Reno" Style="{StaticResource ResourceKey=btnStyle}" Click="btnReno_Click"/>
+            <Button x:Name="btnLada" Content="Lada" Style="{StaticResource ResourceKey=btnStyle}" Click="btnLada_Click"/>
+            <Button x:Name="btntoyota" Content="Toyota" Style="{StaticResource ResourceKey=btnStyle}" Click="btntoyota_Click"/>
+            <Button x:Name="btnRef" Content="Обновить" Style="{StaticResource ResourceKey=btnStyle}" Margin="0 100 0 0" Click="btnRef_Click"/>
+
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False" Foreground="Black" Style="{StaticResource dataGrid}" 
+                  Grid.Column="1" Grid.Row="1" x:Name="dataGrid" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" 
+                                    Binding="{Binding nameProd}" Width="150">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="50" Header="Наименование" Binding="{Binding nameProd}"/>
+                <DataGridTextColumn Width="50" Header="Цена" Binding="{Binding cost}"/>
+                <DataGridTextColumn Width="100" Header="Количество" Binding="{Binding quantity}"/>
+                <DataGridTextColumn Width="100" Header="Марка автомобиля"/> <!-- Binding="{Binding brandID, Converter={StaticResource TypeConverter}}"-->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="editBtn" 
+                                    Click="editBtn_Click"  Background="#FFE2D587" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
