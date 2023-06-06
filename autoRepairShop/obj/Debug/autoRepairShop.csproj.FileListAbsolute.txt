@@ -18,3 +18,14 @@ D:\autoRepairShop\autoRepairShop\obj\Debug\autoRepairShop.csproj.CoreCompileInpu
 D:\autoRepairShop\autoRepairShop\obj\Debug\autoRepairShop.exe
 D:\autoRepairShop\autoRepairShop\obj\Debug\autoRepairShop.pdb
 D:\autoRepairShop\autoRepairShop\obj\Debug\App.baml
+D:\autoRepairShop\autoRepairShop\bin\Debug\EntityFramework.dll
+D:\autoRepairShop\autoRepairShop\bin\Debug\EntityFramework.SqlServer.dll
+D:\autoRepairShop\autoRepairShop\bin\Debug\EntityFramework.xml
+D:\autoRepairShop\autoRepairShop\bin\Debug\EntityFramework.SqlServer.xml
+D:\autoRepairShop\autoRepairShop\bin\Debug\ru\EntityFramework.resources.dll
+D:\autoRepairShop\autoRepairShop\obj\Debug\Product\AddPage.g.cs
+D:\autoRepairShop\autoRepairShop\obj\Debug\Product\EditPage.g.cs
+D:\autoRepairShop\autoRepairShop\obj\Debug\autoRepairShop_Content.g.cs
+D:\autoRepairShop\autoRepairShop\obj\Debug\Product\AddPage.baml
+D:\autoRepairShop\autoRepairShop\obj\Debug\Product\EditPage.baml
+D:\autoRepairShop\autoRepairShop\obj\Debug\autoRepairShop.csproj.CopyComplete

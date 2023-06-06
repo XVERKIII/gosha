@@ -16,90 +16,72 @@ using System.Windows.Shapes;
 
 namespace autoRepairShop.Product
 {
-    /// <summary>
-    /// Логика взаимодействия для ProductPage.xaml
-    /// </summary>
     public partial class ProductPage : Page
     {
-       /* public class TypeIDConverter : IValueConverter
-        {
-            public object Convert(object value, Type targetType,
-                object parameter, CultureInfo culture)
-            {
-                return DataBaseEntities.GetEntities().
-                    typeOfProduct.ToList().FirstOrDefault(x => x.id == (int)value).typeProduct;
-            }
-
-            public object ConvertBack(object value, Type targetType,
-                object parameter, CultureInfo culture)
-            {
-                return DependencyProperty.UnsetValue;
-            }
-        }*/
         private static ProductPage page = new ProductPage();
         public ProductPage()
         {
             InitializeComponent();
-            //dataGrid.ItemsSource = DataBaseEntities.GetEntities().products;
+            dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.ToList();
         }
         public static ProductPage GetPage() => page;
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.frameManager.Navigate(new EditPage((sender as Button).DataContext as product));
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Manager.frameManager.Navigate(AddPage.GetPage());
+            Manager.frameManager.Navigate(new AddPage(null));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            /*  var productRemove = dataGrid.SelectedItems.Cast<product>().ToList();
+              var productRemove = dataGrid.SelectedItems.Cast<product>().ToList();
               if (MessageBox.Show($"Удалить следующие {productRemove.Count()} " +
-                  $"поставки?", "Внимание",
+                  $"Товары?", "Внимание",
                   MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
               {
                   try
                   {
                       DataBaseEntities.GetEntities().product.RemoveRange(productRemove);
                       DataBaseEntities.GetEntities().SaveChanges();
-                      MessageBox.Show("Поставки удалены");
-                      dataGrid.ItemsSource = DataBaseEntities.GetEntities().product;
+                      MessageBox.Show("Товары удалены");
+                      dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.ToList();
                   }
                   catch (Exception ex)
                   {
                       MessageBox.Show(ex.Message.ToString());
                   }
-             }*/
+             }
         }
 
         private void btnRef_Click(object sender, RoutedEventArgs e)
         {
-           // dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.ToList();
+            dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.ToList();
         }
         private void btnReno_Click(object sender, RoutedEventArgs e)
         {
-            //dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.Where(x => x.brandID == 1).ToList();
+            dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.Where(x => x.brand == "Renault").ToList();
 
         }
 
         private void btnLada_Click(object sender, RoutedEventArgs e)
         {
-            //dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.Where(x => x.brandID == 2).ToList();
+            dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.Where(x => x.brand == "Lada").ToList();
 
         }
         private void btntoyota_Click(object sender, RoutedEventArgs e)
         {
-            //dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.Where(x => x.brandID == 3).ToList();
+            dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.Where(x => x.brand == "Toyota").ToList();
         }
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
-           /* dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.
+            dataGrid.ItemsSource = DataBaseEntities.GetEntities().product.
                 Where(x => x.nameProd == search.Text || x.nameProd.Contains(search.Text)).
-                ToList(); */
+                ToList(); 
         }
     }
 }

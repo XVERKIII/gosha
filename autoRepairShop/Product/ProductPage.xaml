@@ -7,8 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductPage">
-
+    <Page.Resources>
+        <!--<local:TypeIDConverter x:Key="TypeConverter"/>-->
+    </Page.Resources>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FF5A602D" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
             <RowDefinition Height="41*"/>
@@ -17,41 +25,41 @@
             <ColumnDefinition Width="161*"/>
             <ColumnDefinition Width="639*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Margin="115,0,0,368.6" Grid.RowSpan="2">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
             <Label Content="Поиск" HorizontalAlignment="Right" VerticalAlignment="Center"  
                    Margin="0 0 -370 0" Foreground="AliceBlue" FontSize="20"/>
             <TextBox x:Name="search" BorderBrush="#FFE2D587" BorderThickness="4 4 4 4" 
                      Background="Transparent" HorizontalAlignment="Right" 
-                     Margin="0 0 -670 0" VerticalAlignment="Center" TextChanged="search_TextChanged"/>
-            <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource btnStyle}" Click="btnAdd_Click"/>
-            <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource btnStyle}" Click="btnDelete_Click"/>
+                     Margin="0 0 -600 0" VerticalAlignment="Center" Width="200"
+                     TextChanged="search_TextChanged"/>
+            <Button x:Name="btnAdd" Content="Добавить" Style="{StaticResource btn}" Click="btnAdd_Click"/>
+            <Button x:Name="btnDelete" Content="Удалить" Style="{StaticResource btn}" Click="btnDelete_Click"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="0,0.2,0.8,-0.4">
-            <Button x:Name="btnReno" Content="Reno" Style="{StaticResource ResourceKey=btnStyle}" Click="btnReno_Click"/>
-            <Button x:Name="btnLada" Content="Lada" Style="{StaticResource ResourceKey=btnStyle}" Click="btnLada_Click"/>
-            <Button x:Name="btntoyota" Content="Toyota" Style="{StaticResource ResourceKey=btnStyle}" Click="btntoyota_Click"/>
-            <Button x:Name="btnRef" Content="Обновить" Style="{StaticResource ResourceKey=btnStyle}" Margin="0 100 0 0" Click="btnRef_Click"/>
+        <StackPanel Grid.Row="1">
+            <Button x:Name="btnReno" Content="Renault" Style="{StaticResource btn}" Click="btnReno_Click"/>
+            <Button x:Name="btnLada" Content="Lada" Style="{StaticResource btn}" Click="btnLada_Click"/>
+            <Button x:Name="btntoyota" Content="Toyota" Style="{StaticResource btn}" Click="btntoyota_Click"/>
+            <Button x:Name="btnRef" Content="Обновить" Style="{StaticResource btn}" Margin="0 100 0 0" Click="btnRef_Click"/>
 
         </StackPanel>
         <DataGrid AutoGenerateColumns="False" Foreground="Black" Style="{StaticResource dataGrid}" 
                   Grid.Column="1" Grid.Row="1" x:Name="dataGrid" IsReadOnly="True" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" 
-                                    Binding="{Binding nameProd}" Width="150">
+                                    Binding="{Binding nameProd}" Width="300" FontSize="20">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextWrapping" Value="Wrap"></Setter>
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Width="50" Header="Наименование" Binding="{Binding nameProd}"/>
-                <DataGridTextColumn Width="50" Header="Цена" Binding="{Binding cost}"/>
-                <DataGridTextColumn Width="100" Header="Количество" Binding="{Binding quantity}"/>
-                <DataGridTextColumn Width="100" Header="Марка автомобиля"/> <!-- Binding="{Binding brandID, Converter={StaticResource TypeConverter}}"-->
+                <DataGridTextColumn Width="200" Header="Цена" Binding="{Binding cost, StringFormat='{}{0:0.00}'}" FontSize="20"/>
+                <DataGridTextColumn Width="150" Header="Количество" Binding="{Binding quantity}" FontSize="20"/>
+                <DataGridTextColumn Width="200" Header="Марка автомобиля" Binding="{Binding brand}" FontSize="20"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Редактировать" Name="editBtn" 
+                            <Button Content="Редактировать" Name="editBtn" Width="150" FontSize="20" Height="50"
                                     Click="editBtn_Click"  Background="#FFE2D587" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

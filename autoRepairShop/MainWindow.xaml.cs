@@ -24,6 +24,7 @@ namespace autoRepairShop
         {
             InitializeComponent();
             Manager.frameManager = frameMainWindow;
+            Manager.frameManager.Navigate(Product.ProductPage.GetPage());
         }
     }
 }

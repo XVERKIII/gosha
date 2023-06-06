@@ -18,15 +18,14 @@ namespace autoRepairShop.Product
 
     public partial class AddPage : Page
     {
-        private static AddPage page = new AddPage();
-        //private product addItem = new product();
-        public AddPage()
+ 
+        private product addItem = new product();
+        public AddPage(product selectedProduct)
         {
-            InitializeComponent();
-            //brandCombo.ItemsSource = DataBaseEntities.GetEntities().brand.ToList();
-            //DataContext = addItem;
+            InitializeComponent();          
+            DataContext = addItem;
         }
-        public static AddPage GetPage() => page;
+
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
@@ -36,7 +35,7 @@ namespace autoRepairShop.Product
         private void btnApply_Click(object sender, RoutedEventArgs e)
         {
             if (nameProdTxt.Text == string.Empty ||
-             brandCombo.SelectedItem == null ||
+             brandTxt.Text == string.Empty ||
              costTxt.Text == string.Empty ||
              quantityTxt.Text == string.Empty
              )
@@ -44,11 +43,10 @@ namespace autoRepairShop.Product
                 MessageBox.Show("заполните поля");
                 return;
             }
-            /*else
+            else
             {
-                editItem.brandID = DataBaseEntities.GetEntities().brand.ToList().
-                FirstOrDefault(x => x.brand == brandCombo.Text).id;
-                DataBaseEntities.GetEntities().products.Add(addItem);
+                
+                DataBaseEntities.GetEntities().product.Add(addItem);
                 try
                 {
                     DataBaseEntities.GetEntities().SaveChanges();
@@ -58,7 +56,7 @@ namespace autoRepairShop.Product
                 {
                     MessageBox.Show(ex.Message.ToString());
                 }
-            }*/
+            }
         }
     }
 }

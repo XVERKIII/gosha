@@ -9,26 +9,30 @@
       Title="AddPage">
 
     <Grid>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="32*"/>
-                <RowDefinition Height="13*"/>
-            </Grid.RowDefinitions>
-            <StackPanel>
-                <Label Content="Наименование" HorizontalAlignment="Center"/>
-                <TextBox x:Name="nameProdTxt" Text="{Binding nameProd}"/>
-                <Label Content="Цена" HorizontalAlignment="Center"/>
-                <TextBox x:Name="costTxt" Text="{Binding cost}"/>
-                <Label Content="Количество" HorizontalAlignment="Center"/>
-                <TextBox x:Name="quantityTxt" Text="{Binding quantity}"/>
-                <Label Content="Бренд" HorizontalAlignment="Center"/>
-                <ComboBox x:Name="brandCombo" HorizontalAlignment="Center" SelectedItem="{Binding brand}" DisplayMemberPath="brand" Height="30" Width="300"/>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Button x:Name="btnExit" Content="Выход" HorizontalAlignment="Center" Margin="0 0 -650 0" Style="{StaticResource btnStyle}" Click="btnExit_Click"/>
-                <Button x:Name="btnApply" Content="Принять" HorizontalAlignment="Center" Margin="0 0 -950 0" Style="{StaticResource btnStyle}" Click="btnApply_Click"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FF5A602D" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Label Content="Наименование" HorizontalAlignment="Center"/>
+            <TextBox x:Name="nameProdTxt" Text="{Binding nameProd}"/>
+            <Label Content="Цена" HorizontalAlignment="Center"/>
+            <TextBox x:Name="costTxt" Text="{Binding cost, StringFormat='{}{0:0.00}'}"/>
+            <Label Content="Количество" HorizontalAlignment="Center"/>
+            <TextBox x:Name="quantityTxt" Text="{Binding quantity}"/>
+            <Label Content="Марка автомобиля" HorizontalAlignment="Center"/>
+            <TextBox x:Name="brandTxt" Text="{Binding brand}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnExit" Content="Выход" HorizontalAlignment="Center" Style="{StaticResource btn}" Click="btnExit_Click"/>
+            <Button x:Name="btnApply" Content="Принять" HorizontalAlignment="Center" Style="{StaticResource btn}" Click="btnApply_Click"/>
 
-            </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 </Page>
